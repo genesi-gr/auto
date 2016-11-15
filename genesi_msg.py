@@ -11,7 +11,7 @@ class car(object):
     def carSend( self , msg ):
         websocket_send( self.socket_server , msg , self.pwd , self.carName )
 
-    def nxo( self ):
+    def nxw( self ):
         self.carSend( 'ηχώ' )
 
     def prosw( self , taxutnta=50. ):
