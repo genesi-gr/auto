@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-                                                                                                                                                                  
+# -*- coding: utf-8 -*-
 from websocket_messaging import websocket_send
 
 class car(object):
