@@ -6,7 +6,7 @@ class car(object):
     def __init__( self , carName ):
         self.carName = carName
         self.socket_server = 'http://genesi.gr:1234'
-        self.pwd = input('Κωδικός')
+        self.pwd = input('Κωδικός ')
 
     def carSend( self , msg ):
         websocket_send( self.socket_server , msg , self.pwd , self.carName )
