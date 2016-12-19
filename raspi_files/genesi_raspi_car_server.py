@@ -101,7 +101,7 @@ def on_msg( ws , msg ):
         print('Νεκρά')
         car.vekra()
     elif 'διακοπή' in msg:
-        os.system( 'poweroff' )
+        os.system( 'sudo poweroff' )
     else:
         if 'πρόσω' in msg:
             taxutnta = int( msg[-3:] )

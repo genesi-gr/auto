@@ -40,7 +40,7 @@ class MainHandler(tornado.web.RequestHandler):
                 <button name='restart' value='restart'>Επανεκκίνηση</button>
             </form>
             <form method='post'>
-                <button name='restart' value='poweoff'>Τερματισμός</button>
+                <button name='poweroff' value='poweoff'>Τερματισμός</button>
             </form>
         '''
         return html 

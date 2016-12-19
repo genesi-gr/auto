@@ -1,5 +1,7 @@
 INTERFACE_NAME=$(iwconfig 2>/dev/null | grep -o "^\w*")
 
+sleep 5;
+
 if ifconfig $INTERFACE_NAME | grep -q "inet addr"
 then
     echo 'connected'
@@ -14,6 +16,6 @@ else
     echo 'not connected'
     # if not connected switch settings to ad hoc and reboot
     sudo cp /etc/network/interfaces-adhoc /etc/network/interfaces
-    sudo reboot
+    # sudo reboot
 fi
 
