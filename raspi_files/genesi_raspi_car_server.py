@@ -35,19 +35,19 @@ class auto( object ):
             GPIO.setmode( GPIO.BCM )
             p_pwm = []
             for pin in self.pwm_pin:
-                print('Setting up pin %d'%pin)
+                print('Setting up pin %d'%pin, flush=True)
                 GPIO.setup( pin , GPIO.OUT )
                 GPIO.PWM( pin , freq )
                 p_pwm.append( GPIO.PWM( pin , freq ) )
                 p_pwm[-1].start( 100 )
             self.p_pwm = p_pwm
             for pin in self.binary_pin:
-                print('Setting up pin %d'%pin)
+                print('Setting up pin %d'%pin, flush=True)
                 GPIO.setup( pin , GPIO.OUT )
                 GPIO.output( pin , True )
                 
 
-    def prosw( self , taxutnta=50. ):
+    def prosw( self , taxutnta=100. ):
         taxutnta = 100. - taxutnta
         if on_ras:
             taxutnta = max( taxutnta , 0. )
@@ -55,7 +55,7 @@ class auto( object ):
             self.p_pwm[1].ChangeDutyCycle( 100. )
             self.p_pwm[0].ChangeDutyCycle( taxutnta )
 
-    def anapoda( self , taxutnta=50. ):
+    def anapoda( self , taxutnta=100. ):
         taxutnta = 100. - taxutnta
         if on_ras:
             taxutnta = max( taxutnta , 0. )
@@ -93,33 +93,33 @@ car = auto()
 
 def on_msg( ws , msg ):
 
-    print('Μήνυμα:', msg)
+    print('Μήνυμα:', msg, flush=True)
     if 'ηχώ' in msg:
-        print('ηχώ')
+        print('ηχώ', flush=True)
         websocket_send('http://' + diakomistns , msg , pwd , 'ηχώ')
     elif 'νεκρά' in msg:
-        print('Νεκρά')
+        print('Νεκρά', flush=True)
         car.vekra()
     elif 'διακοπή' in msg:
         os.system( 'sudo poweroff' )
     else:
         if 'πρόσω' in msg:
             taxutnta = int( msg[-3:] )
-            print('Πρόσω')
+            print('Πρόσω', flush=True)
             car.prosw( taxutnta )
         elif 'ανάποδα' in msg:
             taxutnta = int( msg[-3:] )
-            print('Ανάποδα')
+            print('Ανάποδα', flush=True)
             car.anapoda( taxutnta )
         if 'αριστερά' in msg:
-            print('Αριστερά')
+            print('Αριστερά', flush=True)
             car.aristera()
         elif 'δεξιά' in msg:
-            print('Δεξιά')
+            print('Δεξιά', flush=True)
             car.deksia()
 
 def onError( self , error_msg ):
-    print(error_msg)
+    print(error_msg, file=sys.stderr, flush=True)
 
 if __name__ == '__main__':
 
