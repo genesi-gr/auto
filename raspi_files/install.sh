@@ -54,7 +54,7 @@ WantedBy=multi-user.target' > /etc/systemd/system/check_connection.service
 sudo systemctl enable check_connection
 
 
-# To server website and communicate with genesi.gr
+# To serve website and communicate with genesi.gr
 echo '--------------------------------------------'
 echo 'install tornado and wifi packages'
 sudo apt-get -y install python3-tornado
